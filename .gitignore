@@ -1,6 +1,36 @@
+
+# Exclude dependency directories
 node_modules
+/dist/
 .env
 
 .DS_Store
 
 data
+
+# Exclude virtual environment directories
+venv/
+myenv/
+.venv/
+.myenv/
+
+# Exclude compiled Python files
+*.pyc
+__pycache__/
+
+# Exclude log files and temporary files
+*.log
+*.tmp
+
+# Exclude database files
+db.sqlite3
+
+# Exclude editor and IDE files
+.vscode/
+.idea/
+.pycharm/
+
+# Exclude system and temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
