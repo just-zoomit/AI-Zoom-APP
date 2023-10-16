@@ -74,8 +74,7 @@ Follow these instructions for the "Development" section
 
 #### Features
 
-- Under `Zoom App SDK` click **Add APIs**
-- For the purposes of this app, please add the following APIs and events:
+- Under `Zoom App SDK` click **Add APIs**. For the purposes of this app, please add the following APIs and events:
    |  APIs                  | Events |
    | -----------------------|-------------|
    | `allowParticipantToRecord`   |`onActiveSpeakerChange` |
