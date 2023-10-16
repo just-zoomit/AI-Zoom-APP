@@ -75,41 +75,45 @@ Follow these instructions for the "Development" section
 #### Features
 
 - Under `Zoom App SDK` click **Add APIs**
-  - For the purposes of this app, please add the following APIs and events:
-    - `allowParticipantToRecord`
-    - `authorize`
-    - `cloudRecording`
-    - `connect`
-    - `expandApp`
-    - `getMeetingContext`
-    - `getMeetingJoinUrl`
-    - `getMeetingParticipants`
-    - `getMeetingUUID`
-    - `getRecordingContext`
-    - `getRunningContext`
-    - `getSupportedjsApis`
-    - `getUserContext`
-    - `listCameras`
-    - `onActiveSpeakerChange`
-    - `onAuthorized`
+- For the purposes of this app, please add the following APIs and events:
+   |  APIs                  | Events |
+   | -----------------------|-------------|
+   | `allowParticipantToRecord`   |`onActiveSpeakerChange` |
+   | `authorize`                 | `onAuthorized` |
+   | `cloudRecording`     | `onConnect` |
+   | `connect`            | `onMeeting` |
+   |  `expandApp`         |  `onMessage` |
+   | `getMeetingContext`     |  `onMyUserContextChange` |
+   | `getMeetingJoinUrl`        | `onSendAppInvitation` |
+   | `getMeetingParticipants`   | `onShareApp` |
+   | `getMeetingUUID`           |  |
+   | `getRecordingContext`           |  |
+   | `getRunningContext`           |  |
+   | `getSupportedjsApis`          |  |
+   | `getUserContext`         |  |
+   | `listCameras`         |  |
+   | `setVirtualBackground`      |  |
+   | `openUrl`     |  |
+   | `postMessage`     |  |
+   | `promptAuthorize`    |  |
+   | `removeVirtualBackground`    |  |
+   | `sendAppInvitation`   |  |
+   | `shareApp`    |  |
+   | `showAppInvitationDialog`   |  |
+   | `sendAppInvitationToMeetingOwner`   |  |
+   | `sendAppInvitationToAllParticipants`   |  |
+   | `setVideoMirrorEffect`  |  |
+
+  
+  
     - `onConnect`
     - `onMeeting`
     - `onMessage`
     - `onMyUserContextChange`
     - `onSendAppInvitation`
     - `onShareApp`
-    - `openUrl`
-    - `postMessage`
-    - `promptAuthorize`
-    - `removeVirtualBackground`
-    - `sendAppInvitation`
-    - `shareApp`
-    - `showAppInvitationDialog`
-    - `sendAppInvitationToMeetingOwner`
-    - `sendAppInvitationToAllParticipants`
-    - `setVideoMirrorEffect`
-    - `setVirtualBackground`
-    - `showNotification`
+    
+    
   - Users will be asked to consent to these scopes during the add flow before being allowed to use the Zoom App
   - Important: The added or checked items must at least include those in the "capabilities" list in the call to zoomSdk.config in the embedded browser, eg frontend/src/App.js
 - Select any additional features you would like to enable, eg Guest mode, In-client OAuth, Collaborate mode, etc. For this app, have Guest mode, In-client OAuth, and Collaborate Mode turned on.
