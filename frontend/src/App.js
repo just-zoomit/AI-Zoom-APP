@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { apis } from "./apis";
 import { Authorization } from "./components/Authorization";
 import ApiScrollview from "./components/ApiScrollview";
+import ColorSchemesExample from "./components/Navbar/Navbar";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -192,6 +193,7 @@ function App() {
 
   return (
     <div className="App">
+      <ColorSchemesExample />
       <h1>Hello{user ? ` ${user.first_name} ${user.last_name}` : " Zoom Apps user"}!</h1>
       <p>{`User Context Status: ${userContextStatus}`}</p>
       <p>

@@ -116,7 +116,7 @@ Follow these instructions for the "Development" section
   - The Scopes referred to here are for the Zoom API - they are not exclusive to Zoom Apps. Please find documentation for the Zoom API [here](https://marketplace.zoom.us/docs/api-reference/introduction)
   - As with the Zoom App SDK APIs and events from the 'Features' tab, scopes selected here will be presented to users for consent before they may use the Zoom App.
 
-
+----
 
 ## Start developing
 
