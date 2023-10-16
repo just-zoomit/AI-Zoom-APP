@@ -104,15 +104,6 @@ Follow these instructions for the "Development" section
    | `sendAppInvitationToAllParticipants`   |  |
    | `setVideoMirrorEffect`  |  |
 
-  
-  
-    - `onConnect`
-    - `onMeeting`
-    - `onMessage`
-    - `onMyUserContextChange`
-    - `onSendAppInvitation`
-    - `onShareApp`
-    
     
   - Users will be asked to consent to these scopes during the add flow before being allowed to use the Zoom App
   - Important: The added or checked items must at least include those in the "capabilities" list in the call to zoomSdk.config in the embedded browser, eg frontend/src/App.js
