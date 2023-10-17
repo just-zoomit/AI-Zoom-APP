@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { apis } from "./apis";
 import { Authorization } from "./components/Authorization";
 import ApiScrollview from "./components/ApiScrollview";
-import ColorSchemesExample from "./components/Navbar/Navbar";
+import AINavbar from "./components/Navbar/AINavbar";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -193,8 +193,17 @@ function App() {
 
   return (
     <div className="App">
-      <ColorSchemesExample />
-      <h1>Hello{user ? ` ${user.first_name} ${user.last_name}` : " Zoom Apps user"}!</h1>
+    <Authorization
+        handleError={setError}
+        handleUserContextStatus={setUserContextStatus}
+        handleUser={setUser}
+        user={user}
+        userContextStatus={userContextStatus}
+      />
+
+  
+
+    
       <p>{`User Context Status: ${userContextStatus}`}</p>
       <p>
         {runningContext ?
@@ -202,15 +211,6 @@ function App() {
           "Configuring Zoom JavaScript SDK..."
         }
       </p>
-
-      <ApiScrollview />
-      <Authorization
-        handleError={setError}
-        handleUserContextStatus={setUserContextStatus}
-        handleUser={setUser}
-        user={user}
-        userContextStatus={userContextStatus}
-      />
 
     </div>
   );

@@ -7,6 +7,10 @@ import Header from "./Header";
 import IFrame from "./IFrame";
 import Image from "./Image";
 import UserInfo from "./UserInfo";
+import OpenAI from "./pages/OpenAI";
+import Langchain from "./pages/Langchain";
+import ApiScrollview from "./ApiScrollview";
+import Home from "./Home";
 
 export const Authorization = (props) => {
   const {
@@ -137,22 +141,14 @@ export const Authorization = (props) => {
 
   return (
     <>
-      <p>You are on this route: {location.pathname}</p>
-
-      {!inGuestMode && <Button
-        variant="primary"
-        onClick={inGuestMode ? promptAuthorize : authorize}
-      >
-        {inGuestMode ? "promptAuthorize" : "authorize"}
-      </Button>}
-
-      <div>
+     <div>
         <Header
-          navLinks={{ userInfo: "User Info", iframe: "IFrame", image: "Image" }}
+          navLinks={{ homes: "Home", userInfo: "User Info", iframe: "IFrame", image: "Image" , openAI: "OpenAI", langchain: "Langchain" }}
         />
         <Route path="" exact>
           <Redirect to="/userinfo" />
         </Route>
+
         <Route path="/userinfo">
 
           <UserInfo
@@ -163,13 +159,38 @@ export const Authorization = (props) => {
             showInClientOAuthPrompt={showInClientOAuthPrompt}
           />
         </Route>
+        <Route path="/homes">
+          <Home />
+        </Route>
+
         <Route path="/image">
           <Image />
         </Route>
         <Route path="/iframe">
           <IFrame />
         </Route>
+
+        <Route path="/openAI">
+            <OpenAI />
+          </Route>
+          <Route path="/langchain">
+            <Langchain />
+          </Route>
+        
       </div>
+      <h1>Hello{user ? ` ${user.first_name} ${user.last_name}` : " Zoom Apps user"}!</h1>
+    
+  
+      <p>You are on this route: {location.pathname}</p>
+
+      {!inGuestMode && <Button
+        variant="primary"
+        onClick={inGuestMode ? promptAuthorize : authorize}
+      >
+        {inGuestMode ? "promptAuthorize" : "authorize"}
+      </Button>}
+
+      <ApiScrollview /> 
       <Header navLinks={{ auth0Data: "Auth0 User Data" }} />
       <Auth0User user={user} />
     </>
