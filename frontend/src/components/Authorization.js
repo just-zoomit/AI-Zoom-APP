@@ -159,7 +159,8 @@ export const Authorization = (props) => {
             showInClientOAuthPrompt={showInClientOAuthPrompt}
           />
         </Route>
-        <Route path="/homes">
+
+        <Route path="/home">
           <Home />
         </Route>
 
@@ -178,9 +179,16 @@ export const Authorization = (props) => {
           </Route>
         
       </div>
+
+      <hr/> 
+      
+      <p>{`Source File: Authorization.js `}</p>
+
       <h1>Hello{user ? ` ${user.first_name} ${user.last_name}` : " Zoom Apps user"}!</h1>
     
-  
+      <p>{`User Context Status: ${userContextStatus}`}</p>
+      
+      
       <p>You are on this route: {location.pathname}</p>
 
       {!inGuestMode && <Button
@@ -189,7 +197,6 @@ export const Authorization = (props) => {
       >
         {inGuestMode ? "promptAuthorize" : "authorize"}
       </Button>}
-
       <ApiScrollview /> 
       <Header navLinks={{ auth0Data: "Auth0 User Data" }} />
       <Auth0User user={user} />
