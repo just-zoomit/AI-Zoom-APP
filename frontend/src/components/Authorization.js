@@ -143,7 +143,7 @@ export const Authorization = (props) => {
     <>
      <div>
         <Header
-          navLinks={{ homes: "Home", userInfo: "User Info", iframe: "IFrame", image: "Image" , openAI: "OpenAI", langchain: "Langchain" }}
+          navLinks={{ home: "Home", userInfo: "User Info", iframe: "IFrame", image: "Image" , openAI: "OpenAI", langchain: "Langchain" }}
         />
         <Route path="" exact>
           <Redirect to="/userinfo" />
@@ -181,25 +181,8 @@ export const Authorization = (props) => {
       </div>
 
       <hr/> 
-      
-      <p>{`Source File: Authorization.js `}</p>
 
-      <h1>Hello{user ? ` ${user.first_name} ${user.last_name}` : " Zoom Apps user"}!</h1>
-    
-      <p>{`User Context Status: ${userContextStatus}`}</p>
-      
-      
-      <p>You are on this route: {location.pathname}</p>
-
-      {!inGuestMode && <Button
-        variant="primary"
-        onClick={inGuestMode ? promptAuthorize : authorize}
-      >
-        {inGuestMode ? "promptAuthorize" : "authorize"}
-      </Button>}
-      <ApiScrollview /> 
-      <Header navLinks={{ auth0Data: "Auth0 User Data" }} />
-      <Auth0User user={user} />
+     
     </>
   );
 };

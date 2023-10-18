@@ -203,7 +203,7 @@ function App() {
 
   
       <hr/> 
-      <p>{`Source File: App.js `}</p>
+      {/* <p>{`Source File: App.js `}</p>
     
       <p>{`User Context Status: ${userContextStatus}`}</p>
       <p>
@@ -211,7 +211,7 @@ function App() {
           `Running Context: ${runningContext}` :
           "Configuring Zoom JavaScript SDK..."
         }
-      </p>
+      </p> */}
 
     </div>
   );
