@@ -6,12 +6,14 @@ import msgIcon from "../assets/message.svg";
 import home from "../assets/home.svg";
 import save from "../assets/bookmark.svg";
 import rocket from "../assets/rocket.svg";
+import sendBtn from "../assets/send.svg";
+import userIcon from "../assets/user-icon.png";
+import gptImgLogo from "../assets/chatgptLogo.svg";
 
 function Home() {
   return (
     <>
       <div className="chatApp">
-     
         <div className="sideBar">
           <div className="upperSide">
             <div className="upperSideTop">
@@ -22,18 +24,22 @@ function Home() {
                 {" "}
                 <img src={addBtn} alt="Chat" className="addBtn" /> New Chat{" "}
               </button>
-              
-              <div className="upperSideBottom">
-                <button className="query">
-                  <img src={msgIcon} alt="Query"  />
-                  What is programming?
-                </button>
-                <button className="query">
-                  <img src={msgIcon} alt="Query"  />
-                  What is programming?
-                </button>
-              </div>
-              
+            </div>{" "}
+            <div className="upperSideBottom">
+              <button className="query">
+                <img src={msgIcon} alt="Query" />
+                What is Chromium Embedded Framework ?
+              </button>
+
+              <button className="query">
+                <img src={msgIcon} alt="Query" />
+                What is Zoom Apps JavaScript SDK ?
+              </button>
+
+              <button className="query">
+                <img src={msgIcon} alt="Query" />
+                What is WebDriver BiDI protocol ?
+              </button>
             </div>
           </div>
 
@@ -50,14 +56,33 @@ function Home() {
               Upgrade To Pro
             </button>
           </div>
-
         </div>
 
         <div className="main">
-          <div className="chats"> 
+          <div className="chats">
+
+            <div className="chat">
+              <img className="chatImg" src={userIcon} alt="Logo" />
+              <p className="txt">
+                Hi, I am ZoomGPT. I can help you with your queries related to
+                Zoom Apps JavaScript SDK.
+              </p>
+            </div>
+
+            <div className="chat bot">
+              <img className="chatImg" src={gptImgLogo} alt="Logo" />
+              <p className="txt">
+                Hi, I am ZoomGPT. I can help you with your queries related to
+                Zoom Apps JavaScript SDK.
+              </p>
+            </div>
           </div>
-        
-        <div className="chatFooter"> </div>
+
+          <div className="chatFooter">
+            <div className="inp">
+              <input type="text" className="inp" placeholder="Type a message" /><button className="send"> <img src={sendBtn} alt="Send" />{" "} </button>
+            </div>
+          </div>
         </div>
       </div>
     </>

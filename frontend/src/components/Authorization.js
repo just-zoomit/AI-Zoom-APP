@@ -7,8 +7,7 @@ import Header from "./Header";
 import IFrame from "./IFrame";
 import Image from "./Image";
 import UserInfo from "./UserInfo";
-import OpenAI from "./pages/OpenAI";
-import Langchain from "./pages/Langchain";
+import MtgRecControllers from "./pages/MtgRecControllers";
 import ApiScrollview from "./ApiScrollview";
 import Home from "./Home";
 
@@ -143,10 +142,10 @@ export const Authorization = (props) => {
     <>
      <div>
         <Header
-          navLinks={{ home: "Home", userInfo: "User Info", iframe: "IFrame", image: "Image" , openAI: "OpenAI", langchain: "Langchain" }}
+          navLinks={{ home: "Home", userInfo: "User Info", iframe: "IFrame", image: "Image" , mtgRecControllers: "Mtg Bot" }}
         />
         <Route path="" exact>
-          <Redirect to="/userinfo" />
+          <Redirect to="/home" />
         </Route>
 
         <Route path="/userinfo">
@@ -171,11 +170,8 @@ export const Authorization = (props) => {
           <IFrame />
         </Route>
 
-        <Route path="/openAI">
-            <OpenAI />
-          </Route>
-          <Route path="/langchain">
-            <Langchain />
+          <Route path="/MtgRecControllers">
+            <MtgRecControllers />
           </Route>
         
       </div>
