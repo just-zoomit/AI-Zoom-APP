@@ -23,7 +23,7 @@
     margin: 10px;
     text-align: center;
     border-radius: 10px;
-    padding: 20px;
+    padding: 25px;
     white-space: normal;
     word-wrap: break-word;
     overflow: hidden;
@@ -58,7 +58,6 @@
     border-radius: 0.5rem;
     color: white;
   }
-  /* Style each button */
   /* Style each button as squares */
 .mtg-btn {
     flex: 0 0 calc(50% - 20px); /* Two buttons per row with margin in between */
@@ -68,6 +67,7 @@
     width: 100px; /* Set a fixed width for the buttons (adjust as needed) */
     height: 100px; /* Set a fixed height for the buttons (adjust as needed) */
     margin: 5px; /* Margin between buttons */
+    padding: 2rem; /* Remove padding */
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
   }
