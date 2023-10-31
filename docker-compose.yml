@@ -20,6 +20,7 @@ services:
       - ZOOM_APP_CLIENT_ID=${ZOOM_APP_CLIENT_ID}
       - ZOOM_APP_CLIENT_SECRET=${ZOOM_APP_CLIENT_SECRET}
       - ZOOM_APP_CLIENT_URL=http://frontend:9090
+      - ZOOM_APP_EXTERNAL_URL= http://localhost:3015
       - ZOOM_APP_REDIRECT_URI=${PUBLIC_URL}/api/zoomapp/auth
       - ZOOM_APP_OAUTH_STATE_SECRET=${ZOOM_APP_OAUTH_STATE_SECRET}
       - ZOOM_HOST=${ZOOM_HOST}
@@ -50,21 +51,26 @@ services:
       - /home/node/app/node_modules
       
   frontend_external:  # New frontend service for the external browser
-    build: ./frontend_external # Update this to the actual path of your external frontend app
+    build: 
+      context: ./frontend_external/. # Update this to the actual path of your external frontend app
+      dockerfile: Dockerfile
     tty: true
     working_dir: /home/node/app
+    command: "npm start"
     stdin_open: true
     # Map the port inside the container to a port on your host machine (e.g., 3000:3000)
     ports:
-      - "3011:3000" #  HOST_PORT:CONTAINER_PORT
+      - "127.0.0.1:3015:9095" #  HOST_PORT:CONTAINER_PORT
     environment:
+      - PORT=9095
       - CHOKIDAR_USEPOLLING=true 
       - WATCHPACK_POLLING=true # Hot reloading
+      - PUBLIC_URL=${PUBLIC_URL}
+      - REACT_APP_PUBLIC_ROOT=${PUBLIC_URL}
     # Mount your app's source code as a volume so you can edit code without rebuilding
     volumes:
-      - ./frontend_external:/app/src
-      - ./frontend_external/public:/app/publicx
-   
+      - ./frontend_external:/home/node/app
+      - /home/node/app/node_modules 
 
   redis:
     image: redis:alpine

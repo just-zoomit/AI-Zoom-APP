@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import bodyguard from "../assets/bodyguard.png";
 import search from "../assets/search.png";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   position: sticky;
@@ -60,7 +61,10 @@ function Navbar() {
             <Input placeholder="Search library" />
             <img src={search} alt="Title" />
           </Search>
+          <Link to="signin" style={{ textDecoration: "none" }}>
           <Button><img src={bodyguard} alt="Title" /> SIGN IN </Button>
+          </Link>
+          
         </Wrapper>
       </Container>
     </>

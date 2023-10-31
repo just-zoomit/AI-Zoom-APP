@@ -8,41 +8,43 @@ import notification from "../assets/notification.png";
 import gear from "../assets/gear.png";
 import logout from "../assets/logout.png";
 import bodyguard from "../assets/bodyguard.png";
+import edit from "../assets/edit.png";
 
 function Menu() {
   const Container = styled.div`
-  flex: 1;
-  background-color: rgb(3, 0, 31);
-  height: 100vh;
-  color: white;
-  font-size: 14px;
-  position: sticky;
-  top: 0;
-`;
+    flex: 1;
+    background-color: rgb(3, 0, 31);
+    height: 100vh;
+    color: white;
+    font-size: 14px;
+    position: sticky;
+    top: 0;
+  `;
 
   const Wrapper = styled.div`
     padding: 18px 26ox;
   `;
 
   const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-weight: bold;
-  margin-bottom: 25px;
-`;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  `;
 
-const Item = styled.div`
-display: flex;
-align-items: center;
-gap: 20px;
-cursor: pointer;
-padding: 10px 5px;
 
-&:hover {
-  background-color: #373737;
-}
-`;
+  const Item = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    padding: 10px 5px;
+
+    &:hover {
+      background-color: #373737;
+    }
+  `;
 
   const Hr = styled.hr`
     margin: 15px 0px;
@@ -57,24 +59,31 @@ padding: 10px 5px;
     font-weight: bold;
   `;
 
+  const LinkImg = styled.img`
+    @media (max-width: 768px) {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  `;
+
   const Button = styled.button`
-  padding: 5px 15px;
-  background-color: transparent;
-  border: 1px solid #3ea6ff;
-  color: #3ea6ff;
-  border-radius: 3px;
-  font-weight: 500;
-  margin-top: 1px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  
-  @media (max-width: 768px) {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
-`;
+    padding: 5px 15px;
+    background-color: transparent;
+    border: 1px solid #3ea6ff;
+    color: #3ea6ff;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    @media (max-width: 768px) {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  `;
 
   const Txt = styled.p`
     display: flex;
@@ -84,9 +93,9 @@ padding: 10px 5px;
     font-weight: bold;
 
     @media (max-width: 768px) {
-    padding: 5px 10px;
-    font-size: 12px;
-  }
+      padding: 5px 10px;
+      font-size: 12px;
+    }
   `;
 
   return (
@@ -95,46 +104,56 @@ padding: 10px 5px;
         <Wrapper>
           <Link to="video/test" style={{ textDecoration: "none" }}>
             <Logo>
-              <img src={SiteIcon} color="white" alt="Title" />
+              <LinkImg src={SiteIcon} color="white" alt="Title" />
               AI Z-Bot
             </Logo>
           </Link>
         </Wrapper>
         <Item>
-        <Link to="/" style={{textDecoration: "none"}}>
-        <img src={home} color="white" alt="Title" />
-          
-        </Link > 
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <LinkImg src={home} color="white" alt="Title" />
+          </Link>
           Home
         </Item>
 
         <Item>
-         <Link to="/" style={{textDecoration: "none"}}>
-          <img src={videoPlaylist} color="white" alt="Title" />
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <LinkImg src={videoPlaylist} color="white" alt="Title" />
           </Link>
           My Library
         </Item>
         <Item>
-          <img src={notification} color="white" alt="Title" />
+          <LinkImg src={notification} color="white" alt="Title" />
           Notification
         </Item>
+
+        <Item>
+          <LinkImg src={edit} color="white" alt="Title" />
+          Edit Video
+        </Item>
+
+
         <Hr />
+
         <Login>
           <Txt> Sign In to like videos and comment. </Txt>
 
           <Link to="signin" style={{ textDecoration: "none" }}>
+
             <Button>
-              <img src={bodyguard} color="white" alt="Title" /> SIGN IN
+              <LinkImg src={bodyguard} color="white" alt="Title" /> SIGN IN
             </Button>
+
           </Link>
         </Login>
+
         <Hr />
         <Item>
-          <img src={gear} color="white" alt="Title" />
+          <LinkImg src={gear} color="white" alt="Title" />
           Settings
         </Item>
         <Item>
-          <img src={logout} color="white" alt="Title" />
+          <LinkImg src={logout} color="white" alt="Title" />
           Logout
         </Item>
       </Container>

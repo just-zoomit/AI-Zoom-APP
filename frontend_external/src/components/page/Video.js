@@ -5,6 +5,7 @@ import thumbDown from "../../assets/thumbsDown.png";
 import shareVid from "../../assets/share.png";
 import person from "../../assets/person.png";
 import styled from "styled-components";
+import Transcript from '../Transcript';
 
 const Container = styled.div`
   display: flex;
@@ -146,6 +147,7 @@ function Video() {
         <hr />
 
       </Content>
+      <Transcript />
     </Container>
   );
 }

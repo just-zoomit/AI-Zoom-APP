@@ -4,15 +4,26 @@ require('./config')
 
 const http = require('http')
 const express = require('express')
+const fs = require('fs')
 const morgan = require('morgan')
 
 const middleware = require('./middleware')
 
 const zoomAppRouter = require('./api/zoomapp/router')
 const zoomRouter = require('./api/zoom/router')
+const videoStreamerRouter = require('./api/watch/router')
 const thirdPartyOAuthRouter = require('./api/thirdpartyauth/router')
 // Create app
 const app = express()
+
+// Video streamer files
+const videoFileMap = {
+  
+  'demoHeadlessWebbrowser': '/api/watch/vidoes/demoHeadlessWebbrowser.mp4',
+  'testMsdkSig': '/api/watch/vidoes/testMsdkSig.mp4',
+  'zoomWebSocketsDemo': '/api/watch/vidoes/zoomWebSocketsDemo.mp4',
+
+}
 
 // Set view engine (for system browser error pages)
 app.set('view engine', 'pug')
@@ -40,6 +51,50 @@ if (
 }
 
 app.use('/zoom', zoomRouter)
+
+// app.use('/watch', videoStreamerRouter)
+
+app.get('/videos/:filename', (req, res) => {
+  console.log('req.params -->', req.params.filename);
+  console.log('videoFileMap -->', "HERERERE");
+  const { filename } = req.params.filename;
+  console.log('filename -->', filename);
+  const path = videoFileMap[filename];
+
+  if(!path) {
+    return res.status(404).send('File not found');
+  }
+
+  const stat = fs.statSync(path);
+  const fileSize = stat.size;
+  const range = req.headers.range;
+
+  if(range){
+    const parts = range.replace(/bytes=/, "").split("-");
+    const start = parseInt(parts[0], 10);
+    const end = parts[1] ? parseInt(parts[1], 10): fileSize-1;
+
+    const chunksize = (end-start)+1;
+    const file = fs.createReadStream(path, {start, end});
+    const head = {
+      'Content-Range': `bytes ${start}-${end}/${fileSize}`,
+      'Accept-Ranges': 'bytes',
+      'Content-Length': chunksize,
+      'Content-Type':'video/mp4',
+    }
+    res.writeHead(206, head);
+    file.pipe(res);
+  }
+  else {
+    const head = {
+      'Content-Length': fileSize,
+      'Content-Type':'video/mp4',
+    }
+    res.writeHead(200, head);
+    fs.createReadStream(path).pipe(res);
+  }
+})
+
 
 app.get('/hello', (req, res) => {
   res.send('Hello Zoom Apps!')
