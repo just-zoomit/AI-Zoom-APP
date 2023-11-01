@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-
-// Define your styled components outside of the functional component
+import fakeTranscript from './fakeTranscript';
 
 const Container = styled.div`
   display: flex;
-  justify-content: flex-start; /* Changed from flex-end to flex-start */
+  justify-content: flex-start;
   background-color: rgb(3, 0, 31);
   height: 100vh;
   color: white;
@@ -30,6 +29,10 @@ const Logo = styled.div`
   }
 `;
 
+const TranscriptText = styled.p`
+  font-size: 16px;
+  color: white; /* Set the text color to white */
+`;
 
 function Transcript() {
   return (
@@ -39,6 +42,16 @@ function Transcript() {
           <Logo>
             Zoom Mtg AI Transcript
           </Logo>
+          <div>
+            {fakeTranscript.map((line, index) => (
+             
+              <TranscriptText key={index}>
+              <br />
+                <span>{line.time}:</span> {line.text}
+                
+              </TranscriptText>
+            ))}
+          </div>
         </Wrapper>
       </Container>
     </>

@@ -12,7 +12,7 @@ const PageContainer = styled.div`
   justify-content: space-between;
   gap: 24px;
   margin: 0 auto;
-  max-width: 1400px;
+  max-width: 1600px;
   padding: var(--lns-space-large) var(--pagePadding) var(--lns-space-xxlarge);
 `;
 
@@ -111,6 +111,7 @@ function Video() {
   const videoSrc = `https://www.youtube.com/embed/watch?v=qSLoguhOzXk&list=PLbcgcXc-I9h_bIoxrn4w4DCtAmWNotaTa&index=2`;
 
   return (
+    <>
     <PageContainer>
       <VideoContainer>
         <VideoWrapper>
@@ -157,7 +158,11 @@ function Video() {
       <TranscriptContainer>
         <Transcript />
       </TranscriptContainer>
+     
     </PageContainer>
+
+    
+      </>
   );
 }
 
