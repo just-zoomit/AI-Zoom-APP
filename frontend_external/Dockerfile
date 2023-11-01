@@ -7,9 +7,11 @@ WORKDIR /home/node/app
 # Copy package.json and package-lock.json to the working directory
 COPY package*.json ./
 
-# Install dependencies, including 'styled-components' as a regular dependency
+# Install dependencies
 RUN npm install
 RUN npm install --only=dev
+
+RUN chmod -R 777 node /home/node/app/node_modules
 
 # Copy the rest of the application source code to the working directory
 COPY . .

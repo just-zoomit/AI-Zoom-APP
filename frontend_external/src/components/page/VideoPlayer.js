@@ -6,6 +6,7 @@ const VideoPlayer = ({videoId}) => {
 
     useEffect(() => {
         if(videoRef.current){
+            console.log("Video Ref: ", videoRef.current);
             videoRef.current.pause();
             videoRef.current.removeAttribute('src');
             videoRef.current.load();
@@ -13,8 +14,8 @@ const VideoPlayer = ({videoId}) => {
     })
 
   return (
-    <video ref={videoRef} width='320' height='240' controls autoPlay>
-        <source src={`http://localhost:3011/videos/${videoId}`} type='video/mp4' />
+    <video ref={videoRef} width='620' height='540' controls autoPlay>
+        <source src={`http://localhost:3000/videos/${videoId}`} type='video/mp4'></source>
         Your browser does not support the video tag.
     </video>
   )

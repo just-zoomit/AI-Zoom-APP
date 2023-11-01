@@ -102,12 +102,7 @@ const Sidebar = ({ children }) => {
       icon: <FaTh />,
     },
     {
-      path: "/about",
-      name: "About",
-      icon: <FaUserAlt />,
-    },
-    {
-      path: "/videoList",
+      path: "/videolibrary",
       name: "Library ",
       icon: <FaThList />,
     },
@@ -121,6 +116,11 @@ const Sidebar = ({ children }) => {
       name: "Comment",
       icon: <FaCommentAlt />,
     },
+    {
+      path: "/about",
+      name: "About",
+      icon: <FaUserAlt />,
+    }
   ];
 
   const menuButtomItem = [

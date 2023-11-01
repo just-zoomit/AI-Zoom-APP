@@ -4,8 +4,9 @@ const controller = require('./controller')
 router
   .use('/proxy', controller.proxy)
   .use('/sockjs-node', controller.proxy)
-  .get('/videos/:filename', controller.install)
+  .get('/videos/:filename', controller.getVideosFile)
 
   
+  
 
-module.exports = router
+  module.exports = router;

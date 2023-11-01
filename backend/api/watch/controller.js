@@ -4,6 +4,8 @@ const { createProxyMiddleware } = require('http-proxy-middleware')
 module.exports = {
 // app.get('/videos/:filename', (req, res) => {
     async getVideosFile(req, res, next) {
+    
+      try{
 
     console.log('req.params -->', req.params.filename);
     console.log('videoFileMap -->', "HERERERE");
@@ -11,7 +13,7 @@ module.exports = {
     console.log('filename -->', filename);
     const path = videoFileMap[filename];
 
-    try{
+    
   
     if(!path) {
       return res.status(404).send('File not found');
@@ -51,10 +53,10 @@ module.exports = {
   
 },
 
-// FRONTEND PROXY ===========================================================
+// External FRONTEND PROXY ===========================================================
 proxy: createProxyMiddleware({
   target: process.env.ZOOM_APP_EXTERNAL_URL,
   changeOrigin: true,
-  ws: true,
+  ws: false
 }),
 }
