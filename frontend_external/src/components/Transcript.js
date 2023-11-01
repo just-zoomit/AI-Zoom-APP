@@ -2,9 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 
 // Define your styled components outside of the functional component
+
 const Container = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start; /* Changed from flex-end to flex-start */
   background-color: rgb(3, 0, 31);
   height: 100vh;
   color: white;
@@ -28,6 +29,7 @@ const Logo = styled.div`
     background-color: #373737;
   }
 `;
+
 
 function Transcript() {
   return (

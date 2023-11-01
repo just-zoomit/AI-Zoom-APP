@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from '../Card'
 import styled from 'styled-components'
+import Navbar from '../Navbar'
 
 const Container = styled.div`
 display: flex;
@@ -11,6 +12,8 @@ flex-wrap: wrap;
 
 function Home() {
   return (
+    <>
+    <Navbar />
     <Container>
     <Card />
     <Card />
@@ -19,6 +22,7 @@ function Home() {
     <Card />
     <Card />
     </Container>
+    </>
   )
 }
 

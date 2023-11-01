@@ -5,15 +5,22 @@ import thumbDown from "../../assets/thumbsDown.png";
 import shareVid from "../../assets/share.png";
 import person from "../../assets/person.png";
 import styled from "styled-components";
-import Transcript from '../Transcript';
+import Transcript from "../Transcript";
 
-const Container = styled.div`
+const PageContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   gap: 24px;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: var(--lns-space-large) var(--pagePadding) var(--lns-space-xxlarge);
 `;
 
-const Content = styled.div`
+const VideoContainer = styled.div`
   flex: 5;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
 `;
 
 const VideoWrapper = styled.div`
@@ -31,7 +38,6 @@ const VideoFrame = styled.iframe`
 `;
 
 const Title = styled.div`
-margin-top: 20px;
   font-size: 24px;
   font-weight: 500;
   color: #030303;
@@ -42,17 +48,19 @@ const Details = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 0px 10px;
+  margin-top: 20px;
 `;
 
 const Info = styled.div`
-  padding: 0px 10px;
   color: #606060;
 `;
 
 const Buttons = styled.div`
-  padding: 0px 10px;
   display: flex;
   gap: 20px;
+  align-items: center;
+  color: #606060;
 `;
 
 const Button = styled.div`
@@ -65,7 +73,6 @@ const Meeting = styled.div`
   display: flex;
   align-items: center;
   margin: 10px 0;
-  
 `;
 
 const Image = styled.img`
@@ -84,8 +91,7 @@ const MeetingTitle = styled.div`
   font-weight: 500;
 `;
 
-const MeetingParticpantCount = styled.span`
-  color: #606060;
+const MeetingParticipantCount = styled.span`
   font-size: 14px;
 `;
 
@@ -95,14 +101,18 @@ const Description = styled.p`
   padding: 0px 10px;
 `;
 
+const TranscriptContainer = styled.div`
+  flex: 2; /* Adjust the width as needed */
+`;
+
 function Video() {
   const { videoId } = useParams();
 
   const videoSrc = `https://www.youtube.com/embed/watch?v=qSLoguhOzXk&list=PLbcgcXc-I9h_bIoxrn4w4DCtAmWNotaTa&index=2`;
 
   return (
-    <Container>
-      <Content>
+    <PageContainer>
+      <VideoContainer>
         <VideoWrapper>
           <VideoFrame
             src={videoSrc}
@@ -111,8 +121,8 @@ function Video() {
             allowFullScreen
           />
         </VideoWrapper>
+        <br />
         <Title>Test Video</Title>
-        
         <Details>
           <Info>89,000,000 views • Jan 22, 2022</Info>
           <Buttons>
@@ -128,15 +138,13 @@ function Video() {
           </Buttons>
         </Details>
         <hr />
-
         <Meeting>
           <Image src={person} />
           <MeetingDetail>
             <MeetingTitle>Meeting Title</MeetingTitle>
-            <MeetingParticpantCount>15 Participants</MeetingParticpantCount>
+            <MeetingParticipantCount>15 Participants</MeetingParticipantCount>
           </MeetingDetail>
         </Meeting>
-
         <Description>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Example of a
           description of a meeting. Example of a description of a meeting.
@@ -145,10 +153,11 @@ function Video() {
           description of a meeting. Example of a description of a meeting.
         </Description>
         <hr />
-
-      </Content>
-      <Transcript />
-    </Container>
+      </VideoContainer>
+      <TranscriptContainer>
+        <Transcript />
+      </TranscriptContainer>
+    </PageContainer>
   );
 }
 

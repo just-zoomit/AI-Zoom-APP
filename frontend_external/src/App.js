@@ -30,7 +30,7 @@ function App() {
           {/* <Menu /> */}
           <Sidebar />
           <Main>
-            <Navbar />
+        
             <Wrapper>
               <Routes>
                 <Route path="/" element={<Home />} />
