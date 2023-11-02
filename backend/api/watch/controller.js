@@ -1,15 +1,25 @@
 
 const { createProxyMiddleware } = require('http-proxy-middleware')
+const fs = require('fs')
+const path = require('path');
 
 module.exports = {
-// app.get('/videos/:filename', (req, res) => {
+  
     async getVideosFile(req, res, next) {
+
+      // Video streamer files
+      const videoFileMap = {
+        'cdn': path.join(__dirname, 'videos', 'cdn.mp4'),
+        'generate-pass': path.join(__dirname, 'videos', 'generate-pass.mp4'),
+        'get-post': path.join(__dirname, 'videos', 'get-post.mp4'),
+      };
+      
     
       try{
 
     console.log('req.params -->', req.params.filename);
     console.log('videoFileMap -->', "HERERERE");
-    const { filename } = req.params.filename;
+    const filename  = req.params.filename;
     console.log('filename -->', filename);
     const path = videoFileMap[filename];
 

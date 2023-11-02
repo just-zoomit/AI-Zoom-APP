@@ -4,7 +4,7 @@ const controller = require('./controller')
 router
   .use('/proxy', controller.proxy)
   .use('/sockjs-node', controller.proxy)
-  .get('/videos/:filename', controller.getVideosFile)
+  .get('/:filename', controller.getVideosFile)
 
   
   
