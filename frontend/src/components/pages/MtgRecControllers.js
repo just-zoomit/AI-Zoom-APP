@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 import "./MtgRecControllers.css";
 import play from "../../assets/play.svg";
 import pause from "../../assets/pause.svg";
@@ -8,6 +8,36 @@ import logout from "../../assets/logout.svg";
 import botServiceHealth from "../../assets/botServiceHealth.svg";
 
 function MtgRecControllers() {
+
+   const [response, setResponse] = useState(null);
+
+   const handlePost = () => {
+    const data = {
+      meetingId: "91495217558",
+      passWord: "768218",
+      path: "join"
+    };
+  
+    fetch("/api/zoomapp/sendmeetingbot", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success in making POST request:', data);
+        setResponse(data);
+      })
+      .catch((error) => {
+        console.error('Error making POST request:', error);
+      });
+  };
+  
+
+
+
   return (
     <>
       <div className="txt"> Meeting Bot </div>
@@ -32,12 +62,12 @@ function MtgRecControllers() {
       <hr/>
 
       <div className="mtg-rec-controllers">
-        <button className="mtg-btn">
+        <button className="mtg-btn" onClick={handlePost}>
           <img src={play} alt="Query" />
           Start Recording Meeting
         </button>
 
-        <button className="mtg-btn">
+        <button className="mtg-btn"  >
           <img src={stop} alt="Query" />
           Stop Recording Meeting
         </button>
@@ -60,6 +90,7 @@ function MtgRecControllers() {
             <img src={sendBtn} alt="Send" />{" "}
           </button>
         </div>
+        
       </div>
 </div>
     </>
