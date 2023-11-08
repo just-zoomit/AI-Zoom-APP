@@ -5,7 +5,7 @@ import man from "../assets/man.png";
 import { Link } from "react-router-dom";
 
 const Container = styled.div`
-  width: 360px;
+  width: 370px;
   margin-bottom: 45px;
   cursor: pointer;
   padding: 20px;

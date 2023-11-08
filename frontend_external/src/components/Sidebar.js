@@ -43,6 +43,7 @@ const TopSection = styled.div`
 
 const Logo = styled.h1`
   font-size: 30px;
+  font-family: "Avenir";
   display: ${(props) => (props.isOpen ? "block" : "none")};
   
 `;
@@ -50,7 +51,9 @@ const Logo = styled.h1`
 const BarsIconWrapper = styled.div`
   display: flex;
   font-size: 25px;
-  margin-left: ${(props) => (props.isOpen ? "25px" : "0")};
+  font-family: "Avenir";
+  gap: 15px;
+  margin-left: ${(props) => (props.isOpen ? "20px" : "0")};
 `;
 
 const IconWrapper = styled.div`
@@ -62,6 +65,7 @@ const IconWrapper = styled.div`
 
 const LinkText = styled.div`
  font-size: 25px;
+ font-family: "Avenir";
  display: ${(props) => (props.isOpen ? "block" : "none")};
 `;
 
