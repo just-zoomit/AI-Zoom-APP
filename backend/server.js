@@ -4,8 +4,8 @@ require('./config')
 
 const http = require('http')
 const express = require('express')
-const fs = require('fs')
 const morgan = require('morgan')
+const cors = require('cors')
 
 const middleware = require('./middleware')
 
@@ -15,8 +15,6 @@ const videoStreamerRouter = require('./api/watch/router')
 const thirdPartyOAuthRouter = require('./api/thirdpartyauth/router')
 // Create app
 const app = express()
-
-
 
 // Set view engine (for system browser error pages)
 app.set('view engine', 'pug')
@@ -43,8 +41,10 @@ if (
   console.log('Please add Auth0 env variables to enable the /auth0 route')
 }
 
+// Zoom Rest API routes
 app.use('/zoom', zoomRouter)
 
+app.use(cors())
 // Video streamer routes
 app.use('/api/videos', videoStreamerRouter)
 

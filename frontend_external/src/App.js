@@ -36,7 +36,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/signin" element={<LogIn />} />
                 <Route path="/video"  />
-                <Route path="/video/:videoId" element={<Video />} />
+                <Route path="/video/:id" element={<Video />} />
                 <Route path="/videolibrary" element={<VideoPlayerViewer  />} />
               </Routes>
             </Wrapper>

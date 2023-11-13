@@ -16,11 +16,6 @@ function Home() {
     <Navbar />
     <Container>
     <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
     </Container>
     </>
   )

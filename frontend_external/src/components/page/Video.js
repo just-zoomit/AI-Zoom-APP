@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import thumbUp from "../../assets/thumbUp.png";
 import thumbDown from "../../assets/thumbsDown.png";
@@ -105,64 +105,77 @@ const TranscriptContainer = styled.div`
   flex: 2; /* Adjust the width as needed */
 `;
 
-function Video() {
-  const { videoId } = useParams();
+function Video(props) {
+  const { id: videoId } = useParams(); // This extracts 'id' from the URL params
+  const [videoData, setVideoData] = useState({});
 
   const videoSrc = `https://www.youtube.com/embed/watch?v=qSLoguhOzXk&list=PLbcgcXc-I9h_bIoxrn4w4DCtAmWNotaTa&index=2`;
 
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(
+          `${process.env.REACT_APP_PUBLIC_ROOT}/api/videos/video/${videoId}/data`
+        );
+        const data = await res.json();
+        setVideoData(data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchData();
+  }, [videoId]);
+
   return (
     <>
-    <PageContainer>
-      <VideoContainer>
-        <VideoWrapper>
-          <VideoFrame
-            src={videoSrc}
-            title="YouTube video player"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        </VideoWrapper>
-        <br />
-        <Title>Test Video</Title>
-        <Details>
-          <Info>89,000,000 views • Jan 22, 2022</Info>
-          <Buttons>
-            <Button>
-              <img src={thumbUp} alt="Like" /> 123K
-            </Button>
-            <Button>
-              <img src={thumbDown} alt="Dislike" /> Dislike
-            </Button>
-            <Button>
-              <img src={shareVid} alt="Share" /> Share
-            </Button>
-          </Buttons>
-        </Details>
-        <hr />
-        <Meeting>
-          <Image src={person} />
-          <MeetingDetail>
-            <MeetingTitle>Meeting Title</MeetingTitle>
-            <MeetingParticipantCount>15 Participants</MeetingParticipantCount>
-          </MeetingDetail>
-        </Meeting>
-        <Description>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Example of a
-          description of a meeting. Example of a description of a meeting.
-          Example of a description of a meeting. Example of a description of a
-          meeting. Example of a description of a meeting. Example of a
-          description of a meeting. Example of a description of a meeting.
-        </Description>
-        <hr />
-      </VideoContainer>
-      <TranscriptContainer>
-        <Transcript />
-      </TranscriptContainer>
-     
-    </PageContainer>
-
-    
-      </>
+      <PageContainer>
+        <VideoContainer>
+          <VideoWrapper>
+            <VideoFrame
+              src={`${process.env.REACT_APP_PUBLIC_ROOT}/api/videos/${videoId}`}
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </VideoWrapper>
+          <br />
+          <Title>{videoData.name}</Title>
+          <Details>
+            <Info>89,000,000 views • Jan 22, 2022</Info>
+            <Buttons>
+              <Button>
+                <img src={thumbUp} alt="Like" /> 123K
+              </Button>
+              <Button>
+                <img src={thumbDown} alt="Dislike" /> Dislike
+              </Button>
+              <Button>
+                <img src={shareVid} alt="Share" /> Share
+              </Button>
+            </Buttons>
+          </Details>
+          <hr />
+          <Meeting>
+            <Image src={person} />
+            <MeetingDetail>
+              <MeetingTitle>Meeting Title</MeetingTitle>
+              <MeetingParticipantCount>15 Participants</MeetingParticipantCount>
+            </MeetingDetail>
+          </Meeting>
+          <Description>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Example of
+            a description of a meeting. Example of a description of a meeting.
+            Example of a description of a meeting. Example of a description of a
+            meeting. Example of a description of a meeting. Example of a
+            description of a meeting. Example of a description of a meeting.
+          </Description>
+          <hr />
+        </VideoContainer>
+        <TranscriptContainer>
+          <Transcript />
+        </TranscriptContainer>
+      </PageContainer>
+    </>
   );
 }
 

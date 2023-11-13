@@ -11,8 +11,6 @@ COPY package*.json ./
 RUN npm install
 RUN npm install --only=dev
 
-RUN chmod -R 777 node /home/node/app/node_modules
-
 # Copy the rest of the application source code to the working directory
 COPY . .
 

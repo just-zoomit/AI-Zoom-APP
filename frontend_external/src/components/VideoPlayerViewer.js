@@ -22,6 +22,7 @@ function VideoPlayerViewer() {
   function playVideo(e, videoId) {
     e.preventDefault();
     console.log("Set Video ID: ", videoId);
+
     setVideoId(videoId);
   }
 
@@ -29,9 +30,9 @@ function VideoPlayerViewer() {
     <PageContainer>
       {videoId && <VideoPlayer videoId={videoId} />} <br/>
       <VideoButtons>
-      <button onClick={(e)=>{playVideo(e, 'cdn')}}>Play Video 1</button>
-      <button onClick={(e)=>{playVideo(e, 'generate-pass')}}>Play Video 2</button>
-      <button onClick={(e)=>{playVideo(e, 'get-post')}}>Play Video 3</button>
+      <button onClick={(e)=>{playVideo(e, '0')}}>Play Video 1</button>
+      <button onClick={(e)=>{playVideo(e, '1')}}>Play Video 2</button>
+      <button onClick={(e)=>{playVideo(e, '2')}}>Play Video 3</button>
       </VideoButtons>
     </PageContainer>
   );

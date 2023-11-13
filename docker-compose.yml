@@ -20,7 +20,7 @@ services:
       - ZOOM_APP_CLIENT_ID=${ZOOM_APP_CLIENT_ID}
       - ZOOM_APP_CLIENT_SECRET=${ZOOM_APP_CLIENT_SECRET}
       - ZOOM_APP_CLIENT_URL=http://frontend:9090
-      - ZOOM_APP_EXTERNAL_URL= http://localhost:3015
+      - ZOOM_APP_EXTERNAL_URL=http://127.0.0.1:3015
       - ZOOM_APP_REDIRECT_URI=${PUBLIC_URL}/api/zoomapp/auth
       - ZOOM_APP_OAUTH_STATE_SECRET=${ZOOM_APP_OAUTH_STATE_SECRET}
       - ZOOM_HOST=${ZOOM_HOST}
@@ -65,7 +65,7 @@ services:
       - PORT=9095
       - CHOKIDAR_USEPOLLING=true 
       - WATCHPACK_POLLING=true # Hot reloading
-      - PUBLIC_URL=${PUBLIC_URL}
+      - PUBLIC_URL=${PUBLIC_URL}/api/videos/proxy
       - REACT_APP_PUBLIC_ROOT=${PUBLIC_URL}
     # Mount your app's source code as a volume so you can edit code without rebuilding
     volumes:

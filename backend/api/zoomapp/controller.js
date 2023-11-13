@@ -3,7 +3,7 @@ const zoomApi = require('../../util/zoom-api')
 const zoomHelpers = require('../../util/zoom-helpers')
 const store = require('../../util/store')
 
-const axios = require('axios'); //Remove this line if you don't need Axios
+const axios = require('axios') //Remove this line if you don't need Axios
 
 module.exports = {
   // In-client OAuth 1/2
@@ -274,39 +274,38 @@ module.exports = {
     console.log('3. Redirect to frontend', '\n')
     res.redirect('/api/zoomapp/proxy')
   },
-  async sendMeetingBot (req, res, next) {
+  async sendMeetingBot(req, res, next) {
     try {
-    
-      const { meetingId, passWord , path} = req.body
-  
+      const { meetingId, passWord, path } = req.body
+
       console.log('meetingId: ', meetingId)
       console.log('passWord: ', passWord)
 
       // Create the data object to be sent in the request
-    const data = {
-      "ip_address": "10.0.0.151", // Create environment variable for this
-      "path": path,
-      "meeting_id": meetingId,          // Use the meetingId from the request
-      "meeting_passcode": passWord,     // Use the passWord from the request
-      "display_name": "vpf-on-fargate-1"
-    };
+      const data = {
+        ip_address: '10.0.0.151', // Create environment variable for this
+        path: path,
+        meeting_id: meetingId, // Use the meetingId from the request
+        meeting_passcode: passWord, // Use the passWord from the request
+        display_name: 'vpf-on-fargate-1',
+      }
 
-    const config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: 'https://ptqb61lu86.execute-api.us-east-1.amazonaws.com/demo',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: JSON.stringify(data) // Convert data to JSON string
-    };
-  
-    // Make the POST request using Axios
-    const response = await axios.request(config);
+      const config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://ptqb61lu86.execute-api.us-east-1.amazonaws.com/demo',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: JSON.stringify(data), // Convert data to JSON string
+      }
 
-    // Log and return the response
-    console.log(JSON.stringify(response.data));
-return res.json({ result: 'Success' });
+      // Make the POST request using Axios
+      const response = await axios.request(config)
+
+      // Log and return the response
+      console.log(JSON.stringify(response.data))
+      return res.json({ result: 'Success' })
     } catch (error) {
       return next(error)
     }

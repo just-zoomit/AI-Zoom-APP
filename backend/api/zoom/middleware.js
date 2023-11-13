@@ -47,7 +47,6 @@ const refreshToken = async (req, res, next) => {
         refreshToken: tokenResponse.data.refresh_token,
         expired_at: Date.now() + tokenResponse.data.expires_in * 1000,
       })
-
     } catch (error) {
       return next(new Error('Error refreshing user token.'))
     }
@@ -78,7 +77,5 @@ const setZoomAuthHeader = async (req, res, next) => {
     return next(error)
   }
 }
-
-
 
 module.exports = { getUser, refreshToken, setZoomAuthHeader }
