@@ -13,8 +13,8 @@ import botServiceHealth from "../../assets/botServiceHealth.svg";
   
     const handleApiRequest = (path) => {
       const data = {
-        meetingId: "96565020464",
-        passWord: "729423",
+        meetingId: "99843745159",
+        passWord: "788784",
         path: path
       };
   

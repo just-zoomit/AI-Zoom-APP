@@ -283,7 +283,7 @@ module.exports = {
 
       // Create the data object to be sent in the request
       const data = {
-        ip_address: '10.0.0.151', // Create environment variable for this
+        ip_address: '10.0.0.151',
         path: path,
         meeting_id: meetingId, // Use the meetingId from the request
         meeting_passcode: passWord, // Use the passWord from the request
